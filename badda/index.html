@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="so" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Xaaladda Badaha Soomaalida · Cirday</title>
+<meta name="description" content="Xaaladda Badaha Soomaalida: mawjadaha, dabaylaha iyo roobka, saadaal 7 maalmood oo toos ah.">
+<meta name="theme-color" content="#0C2430">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Saadaasha Badda">
+<meta name="application-name" content="Saadaasha Badda">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#"><span class="mark" aria-hidden="true"></span><span>Cirday <b>Badda</b></span></a>
+    <nav class="nav">
+      <a href="#map-sec" data-i18n="nav_map">Khariidad</a>
+      <a href="#port-sec" data-i18n="nav_ports">Dekedaha</a>
+      <a href="#bulletin-sec" data-i18n="nav_bulletin">Warbixin</a>
+      <a href="#season-sec" data-i18n="nav_seasons">Xilliyada</a>
+    </nav>
+    <button class="install" id="installBtn" type="button" hidden data-i18n="install">Daji</button>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="so">SO</button><button data-lang="en">EN</button><button data-lang="ar">ع</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-txt">
+      <div class="eyebrow" data-i18n="eyebrow">Mawjadaha · Dabaylaha · Roobka</div>
+      <h1 data-i18n="title">Xaaladda Badaha Soomaalida</h1>
+      <p class="lead" data-i18n="lead">Saadaal toos ah oo 7 maalmood ah oo loogu talagalay 37 magaalo oo ku yaalla xeebaha dhulka Soomaalida, laga bilaabo Lawyacado ilaa Raas Kambooni.</p>
+      <div class="stamp" id="stamp">Xogta waa la soo rarayaa…</div>
+    </div>
+    <aside class="now" aria-live="polite">
+      <div class="now-head">
+        <span class="eyebrow" data-i18n="now_eb">Hadda</span>
+        <select id="nowSel" aria-label="Port"></select>
+      </div>
+      <div class="now-state"><span class="pill" id="nowPill">—</span></div>
+      <div class="now-grid">
+        <div><span class="k" data-i18n="n_wave">Mawjad</span><span class="v" id="nWave">–</span></div>
+        <div><span class="k" data-i18n="n_swell">Hir fog</span><span class="v" id="nSwell">–</span></div>
+        <div><span class="k" data-i18n="n_wind">Dabayl</span><span class="v" id="nWind">–</span></div>
+        <div><span class="k" data-i18n="n_gust">Kac-dabayleed</span><span class="v" id="nGust">–</span></div>
+      </div>
+      <div class="now-foot" id="nowFoot">&nbsp;</div>
+      <table class="key" aria-labelledby="keyCap">
+        <caption id="keyCap" data-i18n="k_cap">Midabadu maxay sheegayaan?</caption>
+        <thead><tr><th data-i18n="k_col">Midab</th><th data-i18n="k_mean">Macnaha</th><th data-i18n="k_lim">Mawjad · Dabayl</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill p-calm" data-i18n="k_calm">Deggan</span></td><td data-i18n="k_calm_m">Badda waa deggan tahay; doomaha yaryar way bixi karaan.</td><td class="lim">&lt; 1.25 m</td></tr>
+          <tr><td><span class="pill p-mod" data-i18n="k_mod">Taxaddar</span></td><td data-i18n="k_mod_m">Doomaha yaryar ha ku dhowaadaan xeebta.</td><td class="lim">1.25 – 2.5 m · ≥ 25 kt</td></tr>
+          <tr><td><span class="pill p-rough" data-i18n="k_rough">Khatar</span></td><td data-i18n="k_rough_m">Doomaha yaryar ha bixin.</td><td class="lim">≥ 2.5 m · ≥ 34 kt</td></tr>
+        </tbody>
+      </table>
+    </aside>
+  </section>
+
+  <div id="warnings" class="warnings" hidden></div>
+
+  <section id="map-sec" class="block">
+    <div class="map-tools">
+      <div class="layers" role="group" aria-label="Layer">
+        <button data-layer="wave" data-i18n="l_wave">Mawjadaha</button>
+        <button data-layer="swell" data-i18n="l_swell">Hirarka fog</button>
+        <button data-layer="wind" data-i18n="l_wind">Dabaylaha</button>
+        <button data-layer="rain" data-i18n="l_rain">Roobka</button>
+      </div>
+      <div class="map-opts">
+        <label class="arrows-tg"><input type="checkbox" id="arrowsOn" checked> <span data-i18n="arrows">Fallaadhaha dabaysha</span></label>
+        <label class="arrows-tg"><input type="checkbox" id="valuesOn"> <span data-i18n="values">Tirooyinka</span></label>
+        <label class="arrows-tg"><input type="checkbox" id="labelsOn" checked> <span data-i18n="labels">Magacyada</span></label>
+        <select id="baseSel" aria-label="Basemap">
+          <option value="sea" data-i18n="b_sea">Khariidadda badda</option>
+          <option value="sat" data-i18n="b_sat">Dayax-gacmeed</option>
+          <option value="osm" data-i18n="b_osm">Waddooyinka</option>
+        </select>
+      </div>
+    </div>
+    <p class="map-hint" data-i18n="p_hint">Guji meel kasta oo badda ah si aad u aragto saadaasheeda.</p>
+    <div class="map-wrap" dir="ltr">
+      <div id="map" aria-label="Map"></div>
+      <div class="scale" id="scale"></div>
+    </div>
+    <div class="timeline">
+      <button id="play" class="play" aria-label="Play">▶</button>
+      <div class="track">
+        <input type="range" id="slider" min="0" max="55" value="0" aria-label="Time">
+        <div class="ticks" id="ticks"></div>
+      </div>
+      <div class="tlabel" id="tlabel">—</div>
+    </div>
+  </section>
+
+  <section id="port-sec" class="block">
+    <div class="sec-head">
+      <div><div class="eyebrow" data-i18n="ports_eb">Saadaasha dekedaha</div><h2 id="pName">—</h2><div class="sub" id="pReg">—</div></div>
+      <select id="portSel" aria-label="Port"></select>
+    </div>
+    <p id="pSum" class="psum"></p>
+    <div class="mg-box"><svg id="mg" viewBox="0 0 900 300" role="img"></svg></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--wave)"></i><span data-i18n="lg_wave">Mawjadda guud (m)</span></span>
+      <span><i class="sw" style="background:var(--swell)"></i><span data-i18n="lg_swell">Hirarka fog (m)</span></span>
+      <span><i class="sw line"></i><span data-i18n="lg_wind">Dabaysha (guntin)</span></span>
+      <span><i class="sw dash"></i><span data-i18n="lg_gust">Kac-dabayleedka (guntin)</span></span>
+    </div>
+    <div class="tbl"><table id="dtable"></table></div>
+  </section>
+
+  <section id="bulletin-sec" class="block">
+    <div class="eyebrow" data-i18n="bul_eb">Warbixinta badda</div>
+    <h2 data-i18n="bul_title">Gobollada badda</h2>
+    <div class="days" id="days"></div>
+    <div class="bulletin" id="bulletin"></div>
+  </section>
+
+  <section id="season-sec" class="block">
+    <div class="eyebrow" data-i18n="sea_eb">Wareegga sannadka</div>
+    <h2 data-i18n="sea_title">Xilliyada mansuunta</h2>
+    <p class="lead small" data-i18n="sea_lead">Xeebaha dhulka Soomaalida waxaa xukuma dabaylaha mansuunta oo jihada beddela laba jeer sannadkii.</p>
+    <div class="seasons" id="seasons"></div>
+    <h3 class="h3" data-i18n="douglas">Miisaanka Douglas ee xaaladda badda</h3>
+    <div class="tbl"><table id="douglas"></table></div>
+  </section>
+
+  <section class="block">
+    <div class="eyebrow" data-i18n="windy_eb">Khariidad dheeraad ah</div>
+    <h2 data-i18n="windy_title">Windy · muuqaal nool</h2>
+    <div class="windy"><iframe title="Windy" loading="lazy" src="https://embed.windy.com/embed2.html?lat=5.5&lon=47.5&detailLat=2.04&detailLon=45.34&width=650&height=450&zoom=5&level=surface&overlay=waves&product=ecmwfWaves&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=kt&metricTemp=%C2%B0C&radarRange=-1"></iframe></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p data-i18n="foot1">Xogta saadaasha: Open-Meteo (nidaamyada saadaasha ee ECMWF, DWD iyo Météo-France), CC BY 4.0. Khariidadda: © Esri, GEBCO, NOAA.</p>
+  <p data-i18n="foot2">Saadaashu waa xisaab kombiyuutar; ka hor intaadan badda gelin, eeg digniinaha rasmiga ah.</p>
+  <p><a href="../">Cirday</a> · <a href="https://www.facebook.com/XidaarCirday" target="_blank" rel="noopener">Facebook</a> · <a href="../cirka/">Cirdhowr</a> · <a href="../dayax/">Godadka Dayaxa</a></p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+<script>var t,a,e,n;setTimeout(function(){var n;window.__cirdayStarted||(n=document.getElementById("stamp"))&&(n.textContent="Faylasha bogga (app.js, i18n.js) lama helin — hubi in dhammaan faylashu hal gal ku wada jiraan. · Site files not found.")},4e3),"serviceWorker"in navigator&&("https:"===location.protocol||"localhost"===location.hostname)&&window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})}),t=null,a=document.getElementById("installBtn"),window.addEventListener("beforeinstallprompt",function(n){n.preventDefault(),t=n,a.hidden=!1}),e=/iphone|ipad|ipod/i.test(navigator.userAgent)||"MacIntel"===navigator.platform&&1<navigator.maxTouchPoints,n=!0===window.navigator.standalone||window.matchMedia("(display-mode: standalone)").matches,e&&!n&&(a.hidden=!1),a.addEventListener("click",function(){var n;t?(t.prompt(),t.userChoice.finally(function(){t=null,a.hidden=!0})):e&&(n="undefined"!=typeof LANG&&I18N[LANG]||I18N.so,alert(n.install_ios))}),window.addEventListener("appinstalled",function(){a.hidden=!0});
+</script>
+</body>
+</html>
