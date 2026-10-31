@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Xaaladda Badaha Soomaalida · Cirday</title>
-<meta name="description" content="Xaaladda Badaha Soomaalida: mawjadaha, dabaylaha iyo roobka, saadaal 7 maalmood oo toos ah.">
+<title>Saadaasha Badda iyo Webiyada · Cirday</title>
+<meta name="description" content="Saadaasha Badda iyo Webiyada: mawjadaha, dabaylaha iyo roobka xeebaha (Jabuuti ilaa Raaskambooni) iyo qulqulka webiyada Shabeelle iyo Jubba.">
 <meta name="theme-color" content="#0C2430">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -12,8 +12,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Saadaasha Badda">
-<meta name="application-name" content="Saadaasha Badda">
+<meta name="apple-mobile-web-app-title" content="Badda &amp; Webiyada">
+<meta name="application-name" content="Saadaasha Badda iyo Webiyada">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
@@ -27,6 +27,7 @@
     <nav class="nav">
       <a href="#map-sec" data-i18n="nav_map">Khariidad</a>
       <a href="#port-sec" data-i18n="nav_ports">Dekedaha</a>
+      <a href="#river-sec" data-i18n="nav_rivers">Webiyada</a>
       <a href="#bulletin-sec" data-i18n="nav_bulletin">Warbixin</a>
       <a href="#season-sec" data-i18n="nav_seasons">Xilliyada</a>
     </nav>
@@ -40,9 +41,9 @@
 <main>
   <section class="hero">
     <div class="hero-txt">
-      <div class="eyebrow" data-i18n="eyebrow">Mawjadaha · Dabaylaha · Roobka</div>
-      <h1 data-i18n="title">Xaaladda Badaha Soomaalida</h1>
-      <p class="lead" data-i18n="lead">Saadaal toos ah oo 7 maalmood ah oo loogu talagalay 37 magaalo oo ku yaalla xeebaha dhulka Soomaalida, laga bilaabo Lawyacado ilaa Raaskambooni.</p>
+      <div class="eyebrow" data-i18n="eyebrow">Mawjadaha · Dabaylaha · Roobka · Webiyada</div>
+      <h1 data-i18n="title">Saadaasha Badda iyo Webiyada</h1>
+      <p class="lead" data-i18n="lead">Saadaal toos ah oo 7 maalmood ah oo loogu talagalay 38 magaalo oo ku yaalla xeebaha, laga bilaabo Jabuuti ilaa Raaskambooni, iyo qulqulka webiyada Shabeelle iyo Jubba.</p>
       <div class="stamp" id="stamp">Xogta waa la soo rarayaa…</div>
     </div>
     <aside class="now" aria-live="polite">
@@ -83,6 +84,7 @@
       <div class="map-opts">
         <label class="arrows-tg"><input type="checkbox" id="arrowsOn" checked> <span data-i18n="arrows">Fallaadhaha dabaysha</span></label>
         <label class="arrows-tg"><input type="checkbox" id="valuesOn"> <span data-i18n="values">Tirooyinka</span></label>
+        <label class="arrows-tg"><input type="checkbox" id="riversOn" checked> <span data-i18n="rv_layer">Webiyada</span></label>
         <label class="arrows-tg"><input type="checkbox" id="labelsOn" checked> <span data-i18n="labels">Magacyada</span></label>
         <select id="baseSel" aria-label="Basemap">
           <option value="sea" data-i18n="b_sea">Khariidadda badda</option>
@@ -122,6 +124,29 @@
     <div class="tbl"><table id="dtable"></table></div>
   </section>
 
+  <section id="river-sec" class="block">
+    <div class="sec-head">
+      <div><div class="eyebrow" data-i18n="rv_eb">Qulqulka webiyada</div><h2 data-i18n="rv_title">Webiyada Shabeelle iyo Jubba</h2></div>
+      <select id="rvSel" aria-label="River station"></select>
+    </div>
+    <p class="lead small" data-i18n="rv_lead"></p>
+    <div class="rv-top">
+      <div><h3 class="h3" id="rvName">—</h3><div class="sub" id="rvRiver">—</div></div>
+      <span class="pill" id="rvPill">—</span>
+    </div>
+    <p id="rvSum" class="psum"></p>
+    <div class="mg-box"><svg id="rvChart" viewBox="0 0 900 300" role="img"></svg></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--river)"></i><span data-i18n="rv_past">Wixii dhacay</span></span>
+      <span><i class="sw rvdash"></i><span data-i18n="rv_fc">Saadaal</span></span>
+      <span><i class="sw" style="background:var(--river-soft)"></i><span data-i18n="rv_band">Caadiga bishan</span></span>
+      <span><i class="sw rp2"></i><span data-i18n="rv_rp2">Heerka fatahaadda</span></span>
+      <span><i class="sw rp5"></i><span data-i18n="rv_rp5">Fatahaad weyn</span></span>
+    </div>
+    <div class="rv-grid" id="rvGrid"></div>
+    <p class="rv-note" id="rvNote"></p>
+  </section>
+
   <section id="bulletin-sec" class="block">
     <div class="eyebrow" data-i18n="bul_eb">Warbixinta badda</div>
     <h2 data-i18n="bul_title">Gobollada badda</h2>
@@ -147,6 +172,7 @@
 
 <footer class="foot">
   <p data-i18n="foot1">Xogta saadaasha: Open-Meteo (nidaamyada saadaasha ee ECMWF, DWD iyo Météo-France), CC BY 4.0. Khariidadda: © Esri, GEBCO, NOAA.</p>
+  <p data-i18n="rv_foot"></p>
   <p data-i18n="foot2">Saadaashu waa xisaab kombiyuutar; ka hor intaadan badda gelin, eeg digniinaha rasmiga ah.</p>
   <p><a href="../">Cirday</a> · <a href="https://www.facebook.com/XidaarCirday" target="_blank" rel="noopener">Facebook</a> · <a href="../cirka/">Cirdhowr</a> · <a href="../dayax/">Godadka Dayaxa</a></p>
 </footer>
@@ -154,7 +180,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="i18n.js"></script>
 <script src="app.js"></script>
-<script>var t,a,e,n;setTimeout(function(){var n;window.__cirdayStarted||(n=document.getElementById("stamp"))&&(n.textContent="Faylasha bogga (app.js, i18n.js) lama helin — hubi in dhammaan faylashu hal gal ku wada jiraan. · Site files not found.")},4e3),"serviceWorker"in navigator&&("https:"===location.protocol||"localhost"===location.hostname)&&window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})}),t=null,a=document.getElementById("installBtn"),window.addEventListener("beforeinstallprompt",function(n){n.preventDefault(),t=n,a.hidden=!1}),e=/iphone|ipad|ipod/i.test(navigator.userAgent)||"MacIntel"===navigator.platform&&1<navigator.maxTouchPoints,n=!0===window.navigator.standalone||window.matchMedia("(display-mode: standalone)").matches,e&&!n&&(a.hidden=!1),a.addEventListener("click",function(){var n;t?(t.prompt(),t.userChoice.finally(function(){t=null,a.hidden=!0})):e&&(n="undefined"!=typeof LANG&&I18N[LANG]||I18N.so,alert(n.install_ios))}),window.addEventListener("appinstalled",function(){a.hidden=!0});
-</script>
+<script>setTimeout(function(){var n;window.__cirdayStarted||(n=document.getElementById("stamp"))&&(n.textContent="Faylasha bogga (app.js, i18n.js) lama helin — hubi in dhammaan faylashu hal gal ku wada jiraan. · Site files not found.")},4e3),"serviceWorker"in navigator&&("https:"===location.protocol||"localhost"===location.hostname)&&window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})}),(()=>{var t=null,a=document.getElementById("installBtn"),e=(window.addEventListener("beforeinstallprompt",function(n){n.preventDefault(),t=n,a.hidden=!1}),/iphone|ipad|ipod/i.test(navigator.userAgent)||"MacIntel"===navigator.platform&&1<navigator.maxTouchPoints),n=!0===window.navigator.standalone||window.matchMedia("(display-mode: standalone)").matches;e&&!n&&(a.hidden=!1),a.addEventListener("click",function(){var n;t?(t.prompt(),t.userChoice.finally(function(){t=null,a.hidden=!0})):e&&(n="undefined"!=typeof LANG&&I18N[LANG]||I18N.so,alert(n.install_ios))}),window.addEventListener("appinstalled",function(){a.hidden=!0})})();</script>
 </body>
 </html>

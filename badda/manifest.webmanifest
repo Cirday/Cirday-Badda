@@ -1,7 +1,7 @@
 {
-  "name": "Saadaasha Badda",
-  "short_name": "Saadaasha Badda",
-  "description": "Saadaasha badda xeebta Soomaaliya: mawjadaha, dabaylaha iyo roobka, 7 maalmood oo toos ah.",
+  "name": "Saadaasha Badda iyo Webiyada",
+  "short_name": "Badda & Webi",
+  "description": "Saadaasha badda iyo webiyada: mawjadaha, dabaylaha iyo roobka xeebaha (Jabuuti ilaa Raaskambooni) iyo qulqulka webiyada Shabeelle iyo Jubba.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
