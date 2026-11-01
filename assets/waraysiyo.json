@@ -1,0 +1,16 @@
+{
+  "_akhri": "Waraysi kasta: id, date (YYYY-MM-DD), marti (magaca qofka), muuqaal (ikhtiyaari: xiriirka YouTube ama Facebook), sawir (ikhtiyaari), iyo luqad kasta: t (cinwaan), doorka (cidda uu yahay, tusaale 'Badmaax, Boosaaso'), xigasho (hal weedh oo uu yiri), qoraal (liis; 'S: ' = su'aal, 'J: ' = jawaab). Tusaale hoos ka eeg '_tusaale' — koobi oo ku dar liiska 'waraysiyo'.",
+  "_tusaale": {
+    "id": "magaca-waraysiga",
+    "date": "2026-11-15",
+    "marti": "Magaca Martida",
+    "muuqaal": "https://www.youtube.com/watch?v=XXXXXXXXXXX",
+    "so": {
+      "t": "Cinwaanka waraysiga",
+      "doorka": "Badmaax, Boosaaso",
+      "xigasho": "Hal weedh oo uu martidu yiri.",
+      "qoraal": ["S: Su'aasha koowaad?", "J: Jawaabta martida."]
+    }
+  },
+  "waraysiyo": []
+}

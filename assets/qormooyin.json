@@ -1,0 +1,46 @@
+{
+  "_akhri": "Qormo kasta: id (cinwaanka, xarfo yaryar iyo '-'), date (YYYY-MM-DD), qoraa, sawir (ikhtiyaari: /assets/sawirro/xxx.jpg; haddii aan la dhigin, khariidad xiddigeed ayaa la sameeyaa), iyo luqad kasta: t (cinwaan), koob (hal ama laba weedh), qoraal (liis tuducyo; '## ' = cinwaan hoose, '> ' = xigasho, **adag**, *janjeer*, [qoraal](xiriir)). en/ar waa ikhtiyaari: haddii ay maqan yihiin Soomaaliga ayaa la tusaa.",
+  "qormooyin": [
+    {
+      "id": "waa-maxay-cirday",
+      "date": "2026-11-01",
+      "qoraa": "Cirday",
+      "so": {
+        "t": "Waa maxay Cirday?",
+        "koob": "Mashruuc bilaash ah oo soo noolaynaya falagga Soomaalida: magacyada xiddigaha, godadka dayaxa, majarayaasha iyo kaltirsiyada.",
+        "qoraal": [
+          "**Cirday** waa mashruuc bilaash ah oo soo noolaynaya falagga Soomaalida: magacyada xiddigaha, godadka dayaxa, majarayaasha doonyuhu ku socon jireen iyo kaltirsiyada. Waxaa lagu saleeyay buugga Afaggaal iyo ilo kale oo Soomaaliyeed.",
+          "## 28-da god ee dayaxu dego",
+          "Soomaalidu waxay cirka u qaybisay 28 god oo uu dayaxu habeen kasta mid dego. Godadka waxay u qaybsamaan afar kooxood oo xilliyada sannadka la socda.",
+          "> Xiddig kasta oo caawa kor kaaga ka muuqda magac Soomaali ah ayuu leeyahay.",
+          "## Aqoonta soo jireenka ah iyo qalabka casriga ah",
+          "Xisaab kasta waxaa lagu sameeyaa telefoonkaaga, sidaas daraaddeed app-yadu internet la'aan ayay ku shaqeeyaan. Waxaa lagu heli karaa Soomaali, English iyo Carabi. Ka bilow [Cirdhowr](/cirka/) si aad u aragto cirka caawa, ama [Godadka Dayaxa](/dayax/) si aad u ogaato godka uu dayaxu fadhiyo."
+        ]
+      },
+      "en": {
+        "t": "What is Cirday?",
+        "koob": "A free project reviving Somali astronomy: star names, lunar mansions, the star compass and the Somali calendar.",
+        "qoraal": [
+          "**Cirday** is a free project reviving Somali astronomy: star names, lunar mansions, the star compass and the Somali calendar. It builds on the book Afaggaal and other Somali sources.",
+          "## The 28 lunar mansions",
+          "Somalis divided the sky into 28 mansions; the Moon lodges in one each night. The mansions fall into four groups that follow the seasons of the year.",
+          "> Every star above you tonight has a Somali name.",
+          "## Traditional knowledge and modern tools",
+          "Everything is calculated on your phone, so the apps work offline. Available in Somali, English and Arabic. Start with [Cirdhowr](/cirka/) to see tonight's sky, or [Lunar Mansions](/dayax/) to find the Moon's mansion."
+        ]
+      },
+      "ar": {
+        "t": "ما هو Cirday؟",
+        "koob": "مشروع مجاني يُحيي علم الفلك الصومالي: أسماء النجوم ومنازل القمر وبوصلة النجوم والتقويم الصومالي.",
+        "qoraal": [
+          "**Cirday** مشروع مجاني يُحيي علم الفلك الصومالي: أسماء النجوم ومنازل القمر وبوصلة النجوم والتقويم الصومالي، مبني على كتاب أفغّال ومصادر صومالية أخرى.",
+          "## منازل القمر الثماني والعشرون",
+          "قسّم الصوماليون السماء إلى 28 منزلة يحلّ القمر في واحدة منها كل ليلة، وتنقسم المنازل إلى أربع مجموعات تتبع فصول السنة.",
+          "> لكل نجم يظهر فوقك الليلة اسم صومالي.",
+          "## المعرفة التقليدية والأدوات الحديثة",
+          "كل الحسابات تجري على هاتفك، لذا تعمل التطبيقات دون إنترنت. متاح بالصومالية والإنجليزية والعربية. ابدأ بـ[Cirdhowr](/cirka/) لترى سماء الليلة، أو [منازل القمر](/dayax/) لتعرف منزلة القمر."
+        ]
+      }
+    }
+  ]
+}
