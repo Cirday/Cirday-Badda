@@ -181,5 +181,6 @@
 <script src="i18n.js"></script>
 <script src="app.js"></script>
 <script>setTimeout(function(){var n;window.__cirdayStarted||(n=document.getElementById("stamp"))&&(n.textContent="Faylasha bogga (app.js, i18n.js) lama helin — hubi in dhammaan faylashu hal gal ku wada jiraan. · Site files not found.")},4e3),"serviceWorker"in navigator&&("https:"===location.protocol||"localhost"===location.hostname)&&window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})}),(()=>{var t=null,a=document.getElementById("installBtn"),e=(window.addEventListener("beforeinstallprompt",function(n){n.preventDefault(),t=n,a.hidden=!1}),/iphone|ipad|ipod/i.test(navigator.userAgent)||"MacIntel"===navigator.platform&&1<navigator.maxTouchPoints),n=!0===window.navigator.standalone||window.matchMedia("(display-mode: standalone)").matches;e&&!n&&(a.hidden=!1),a.addEventListener("click",function(){var n;t?(t.prompt(),t.userChoice.finally(function(){t=null,a.hidden=!0})):e&&(n="undefined"!=typeof LANG&&I18N[LANG]||I18N.so,alert(n.install_ios))}),window.addEventListener("appinstalled",function(){a.hidden=!0})})();</script>
+<script src="/assets/ticker.js" defer></script>
 </body>
 </html>
