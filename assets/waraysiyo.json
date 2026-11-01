@@ -1,16 +1,160 @@
 {
-  "_akhri": "Waraysi kasta: id, date (YYYY-MM-DD), marti (magaca qofka), muuqaal (ikhtiyaari: xiriirka YouTube ama Facebook), sawir (ikhtiyaari), iyo luqad kasta: t (cinwaan), doorka (cidda uu yahay, tusaale 'Badmaax, Boosaaso'), xigasho (hal weedh oo uu yiri), qoraal (liis; 'S: ' = su'aal, 'J: ' = jawaab). Tusaale hoos ka eeg '_tusaale' — koobi oo ku dar liiska 'waraysiyo'.",
-  "_tusaale": {
-    "id": "magaca-waraysiga",
-    "date": "2026-11-15",
-    "marti": "Magaca Martida",
-    "muuqaal": "https://www.youtube.com/watch?v=XXXXXXXXXXX",
-    "so": {
-      "t": "Cinwaanka waraysiga",
-      "doorka": "Badmaax, Boosaaso",
-      "xigasho": "Hal weedh oo uu martidu yiri.",
-      "qoraal": ["S: Su'aasha koowaad?", "J: Jawaabta martida."]
-    }
+ "_akhri": "Waraysi kasta: id, date (YYYY-MM-DD), marti (magaca qofka), muuqaal (ikhtiyaari: xiriirka YouTube ama Facebook), sawir (ikhtiyaari), iyo luqad kasta: t (cinwaan), doorka (cidda uu yahay, tusaale 'Badmaax, Boosaaso'), xigasho (hal weedh oo uu yiri), qoraal (liis; 'S: ' = su'aal, 'J: ' = jawaab). Tusaale hoos ka eeg '_tusaale' — koobi oo ku dar liiska 'waraysiyo'.",
+ "_tusaale": {
+  "id": "magaca-waraysiga",
+  "date": "2026-11-15",
+  "marti": "Magaca Martida",
+  "muuqaal": "https://www.youtube.com/watch?v=XXXXXXXXXXX",
+  "so": {
+   "t": "Cinwaanka waraysiga",
+   "doorka": "Badmaax, Boosaaso",
+   "xigasho": "Hal weedh oo uu martidu yiri.",
+   "qoraal": [
+    "S: Su'aasha koowaad?",
+    "J: Jawaabta martida."
+   ]
+  }
+ },
+ "waraysiyo": [
+  {
+   "id": "qayb-ka-mid-ah-waraysi-uu-abdirahman-said-dualle-siiyay-bahd",
+   "date": "",
+   "marti": "Abdirahman Said Dualle",
+   "muuqaal": "https://www.facebook.com/XidaarCirday/videos/1334451565437616/",
+   "so": {
+    "t": "Qayb ka mid ah waraysi uu Abdirahman Said Dualle siiyay Bahda danabcable",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": []
+   },
+   "fb": "https://www.facebook.com/reel/1334451565437616/"
   },
-  "waraysiyo": []
+  {
+   "id": "qaybtii-2aad-waraysigii-dabaylaha-badda-iyo-abwaan-jeemis",
+   "date": "",
+   "marti": "Abwaan Jeemis",
+   "muuqaal": "https://www.facebook.com/XidaarCirday/videos/1822611535771887/",
+   "so": {
+    "t": "Qaybtii 2aad Waraysigii Dabaylaha Badda iyo Abwaan Jeemis",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "Qaybtaan waxaa kaga bogandoontaan dabaysha Koosta iyo dabaylo kale iyo waliba Suugaanta baddhacda qayb ka mid ah.",
+     "Haddaa xog cusub ka faa’iiday nala wadaag."
+    ]
+   },
+   "fb": "https://www.facebook.com/reel/1822611535771887/"
+  },
+  {
+   "id": "dabaylaha-badda-iyo-abwaan-jeemis-qaybtii-1aad",
+   "date": "",
+   "marti": "Abwaan Jeemis",
+   "muuqaal": "https://www.facebook.com/XidaarCirday/videos/1711821383352577/",
+   "so": {
+    "t": "Dabaylaha badda iyo Abwaan Jeemis qaybtii 1aad",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "Waxaa waraysiga qaaday Eng Abdirahman Said Dualle, oo ka mid ah hawl-wadeennada bahda Cirday.",
+     "Qaybtaan waxaa kaga bogan doontaan oraahdii ahayd, “baxru wa sitiin” oo ah oraah ay asxaabta Cirday aad noo waydiiyaan."
+    ]
+   },
+   "fb": "https://www.facebook.com/reel/1711821383352577/"
+  },
+  {
+   "id": "qaybtii-2aad-waraysigii-cilmiga-xiddigaha-ee-abwaan-jeemis",
+   "date": "",
+   "marti": "Abwaan Jeemis",
+   "muuqaal": "https://www.facebook.com/XidaarCirday/videos/1021098913839032/",
+   "so": {
+    "t": "Qaybtii 2aad Waraysigii Cilmiga Xiddigaha ee Abwaan Jeemis",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "Qaybtaan waxaa kaga bogan doontaan Bilo-dirir , oo ka mid ah kaltirsiga Soomaaliyeed ee Bilo-dirir iyo Bilo-danbarsame."
+    ]
+   },
+   "fb": "https://www.facebook.com/reel/1021098913839032/"
+  },
+  {
+   "id": "xiddigaha-oo-dhan-24-fadhi-bay-leeyihiin-ee-waxaa-bad-badala",
+   "date": "",
+   "marti": "Xidaar Timajilic",
+   "muuqaal": "https://www.facebook.com/XidaarCirday/videos/972599718557711/",
+   "so": {
+    "t": "“Xiddigaha oo dhan 24 fadhi bay leeyihiin, ee waxaa bad-badala bil 29…",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "“Xiddigaha oo dhan 24 fadhi bay leeyihiin, ee waxaa bad-badala bil 29 ku dhammaatay”",
+     "Xidaar Timajilic.",
+     "Waxaa waraysiga qaaday ustaad Sulaymaan.",
+     "Xidaarku waa reer Buuhoodle sida isoo na soo gaartay."
+    ]
+   },
+   "fb": "https://www.facebook.com/reel/972599718557711/"
+  },
+  {
+   "id": "waraysigii-2aad-ee-kasmada-xiddigaha-ee-abwaan-cabdulqaadir",
+   "date": "",
+   "marti": "Abwaan Cabdulqaadir Salaad",
+   "muuqaal": "",
+   "so": {
+    "t": "Waraysigii 2AAD ee kasmada xiddigaha ee Abwaan Cabdulqaadir Salaad Qaybtii 2AAD",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "Waxaa qaybtaan kaga bogan doontaa , in shaa Allaah, xiddigaha dabaylaha iyo dabayshooda."
+    ]
+   },
+   "fb": ""
+  },
+  {
+   "id": "waraysigii-2aad-ee-kasmada-xiddigaha-ee-abwaan-cabdulqaadir-2",
+   "date": "",
+   "marti": "Abwaan Cabdulqaadir Salaad",
+   "muuqaal": "",
+   "so": {
+    "t": "Waraysigii 2AAD ee kasmada xiddigaha ee Abwaan Cabdulqaadir Salaad Qaybtii 1AAD",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "Waxaa kaga bogan doontaa qaybtaan labo kaltirsi ,oo ka mid ah kal-tirsiyada soomaaliyeed ,oo kala ah:-",
+     "Kal-tirsiga Dab-shidka/Dab-tuurka/Kala-guurka/Nayruuska iyo kal-tirsiga Bilo-dirir iyo Bilo-danbarsame."
+    ]
+   },
+   "fb": ""
+  },
+  {
+   "id": "qaybtii-2aad-ee-waraysigii-kasmada-xiddiga-ee-xidaar-cabdi-j",
+   "date": "",
+   "marti": "Xidaar Cabdi Jaamac",
+   "muuqaal": "",
+   "so": {
+    "t": "Qaybtii 2AAD ee waraysigii kasmada xiddiga ee Xidaar Cabdi Jaamac",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "“Jeer wadaama-googu\nWaaga ku ekaado\nWayshu waada ma dayso\nAnna wooda ma daayo “\nGeeraar hore"
+    ]
+   },
+   "fb": ""
+  },
+  {
+   "id": "waraysigii-cilmiga-xiddigaha-ee-xidaar-cabdi-jaamac-qaybtii",
+   "date": "",
+   "marti": "Xidaar Cabdi Jaamac",
+   "muuqaal": "",
+   "so": {
+    "t": "Waraysigii cilmiga xiddigaha ee xidaar CABDI JAAMAC Qaybtii 1AAD",
+    "doorka": "",
+    "xigasho": "",
+    "qoraal": [
+     "“Dayrna shan la’aan ma di’i weydo guna toban riix ma waayo”.",
+     "*Maahmaah*"
+    ]
+   },
+   "fb": ""
+  }
+ ]
 }
