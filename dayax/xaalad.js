@@ -34,12 +34,12 @@
     row("dab", "dabshid/", "Sannadka Dabshidka", v, "Sano " + ADJ[wd] + " · maalinta " + (doy + 1) + " / 365");
   })();
 
-  /* Xilliyada: Afaggaallada 15/1, Dirir 22/4 aroortii; Afaggaallada 27/6, Dirir 27/9 maqribkii */
+  /* Xilliyada: Afaggaallada 18/1, Dirir 19/4 aroortii; Afaggaallada 27/6, Dirir 27/9 maqribkii */
   (function(){
-    var y = new Date(today).getUTCFullYear(), L = [[0,15,"Diraac/Jiilaal"],[3,22,"Gu’"],[5,27,"Xagaa"],[8,27,"Dayr"]];
+    var y = new Date(today).getUTCFullYear(), L = [[0,18,"Diraac/Jiilaal"],[3,19,"Gu’"],[5,27,"Xagaa"],[8,27,"Dayr"]];
     var c = ["Dayr", Date.UTC(y - 1, 8, 27)], nx = null;
     for (var i = 0; i < L.length; i++){ var t = Date.UTC(y, L[i][0], L[i][1]); if (t <= today) c = [L[i][2], t]; else if (!nx) nx = [L[i][2], t]; }
-    if (!nx) nx = ["Diraac/Jiilaal", Date.UTC(y + 1, 0, 15)];
+    if (!nx) nx = ["Diraac/Jiilaal", Date.UTC(y + 1, 0, 18)];
     row("xil", "xilliyada/", "Xilliyada", c[0] + ", cishada " + (Math.round((today - c[1]) / DAY) + 1), nx[0] + " · " + fmt(nx[1]));
   })();
 
@@ -70,9 +70,9 @@
     try{ HF = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura-nu-latn", {month:"numeric", timeZone:"UTC"}); }catch(e){}
     var hm = function(t){ try{ return HM[+HF.formatToParts(new Date(t)).filter(function(p){ return p.type === "month"; })[0].value - 1]; }catch(e){ return ""; } };
 
-    /* Bilaha Dayaxa (Wadaanta): bisha Afaggaalladu 15/1 ku dhacaan waa diraac 1 (29 ama ka danbe: bisha xigta) */
+    /* Bilaha Dayaxa (Wadaanta): bisha Afaggaalladu 18/1 ku dhacaan waa diraac 1 (29 ama ka danbe: bisha xigta) */
     (function(){
-      function start(Y){ var s = Date.UTC(Y, 0, 15), i = mOf(s); return lday(s) >= 29 ? ST[i + 1] : ST[i]; }
+      function start(Y){ var s = Date.UTC(Y, 0, 18), i = mOf(s); return lday(s) >= 29 ? ST[i + 1] : ST[i]; }
       var Y = y + 1; while (start(Y) > night) Y--;
       var a = start(Y), b = start(Y + 1), idx = 0, i0 = mOf(a), ic = mOf(night);
       idx = ic - i0;
@@ -92,7 +92,7 @@
         return out; }
       var nd = function(t){ var l = t + TZ, d = Math.floor(l / DAY) * DAY; if (l - d >= 18 * 36e5) d += DAY; return d; };
       var PD = passes(13), PR = passes(26), after = function(arr, t){ for (var i = 0; i < arr.length; i++) if (arr[i] > t) return arr[i]; };
-      function ys(Y){ var a = Date.UTC(Y, 0, 15), i = 0; while (nd(PD[i]) < a) i++; if (lday(nd(PD[i])) >= 22) i++; return PD[i]; }
+      function ys(Y){ var a = Date.UTC(Y, 0, 18), i = 0; while (nd(PD[i]) < a) i++; if (lday(nd(PD[i])) >= 22) i++; return PD[i]; }
       var DIR = ["Lixkor","Toddob","Amminla’","Seermaweydo","Cawl","Dirir-sagaar"], DAM = ["Dabbooje","Habar-ari","Danab","Dayrweyn","Ximir","Xays"];
       var Y = y + 1; while (ys(Y) > night) Y--;
       var s = ys(Y), s1 = ys(Y + 1), L = [], i = PD.indexOf(s);
