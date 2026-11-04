@@ -12,7 +12,7 @@
   function row(id, href, name, val, sub){ rows[id] = '<a class="xr" href="' + href + '"><span class="xn">' + name + '</span><span class="xv">' + val + (sub ? '<small>' + sub + '</small>' : '') + '</span></a>'; }
   function paint(){
     box.innerHTML = '<div class="xh">' + (eve || loc.getUTCHours() < 6 ? "Caawa" : "Maanta") + '</div>' +
-      ["doon","bil","dab","xil","dir"].map(function(k){ return rows[k] || ""; }).join("");
+      ["doon","bil","dab","xil","dir","bd"].map(function(k){ return rows[k] || ""; }).join("");
   }
 
   /* Sannadka Doonyaha: 15 Ogost, 12 × 30 cisho, 4 gudcur, sugidda Dabbooje-yaraha */
@@ -45,6 +45,7 @@
 
   row("bil", "bilaha/", "Bilaha Dayaxa", "…", "waa la xisaabinayaa");
   row("dir", "bilo-dirir/", "Bilo-dirir · Bilo-dambarsame", "…", "waa la xisaabinayaa");
+  row("bd", "bil-dhalasho/", "Bil-dhalashada", "…", "waa la xisaabinayaa");
   paint();
 
   /* Bilaha dayaxa iyo Bilo-dirir: waxay u baahan yihiin bildhalashada iyo kulammada dayaxa */
@@ -58,12 +59,12 @@
       var ss = rs(A.Body.Sun, -1, dk * DAY - TZ + 12 * 36e5); if (ss == null) return null;
       var T0 = MK(ss), age = (ss - conj) / 36e5, eq = A.Equator(A.Body.Moon, T0, OB, true, true), hz = A.Horizon(T0, OB, eq.ra, eq.dec, "normal");
       var ms_ = hz.altitude > 0 ? rs(A.Body.Moon, -1, ss) : rs(A.Body.Moon, -1, ss - DAY), lag = ms_ == null ? null : (ms_ - ss) / 6e4, el = A.AngleFromSun(A.Body.Moon, T0);
-      return {dk:dk, all: conj < ss && lag != null && lag >= 29 && age >= 15 && el >= 7};
+      return {dk:dk, ss:ss, all: conj < ss && lag != null && lag >= 29 && age >= 15 && el >= 7};
     }
-    var y = new Date(night).getUTCFullYear(), T0 = Date.UTC(y - 1, 0, 1), T1 = Date.UTC(y + 2, 0, 1), ST = [], x = T0 - 35 * DAY;
+    var y = new Date(night).getUTCFullYear(), T0 = Date.UTC(y - 4, 0, 1), T1 = Date.UTC(y + 2, 0, 1), ST = [], GD = [], x = T0 - 35 * DAY;
     while (x < T1){ var conj = A.SearchMoonPhase(0, MK(x), 40).date.getTime(), ev = null, k = dayKey(conj);
       for (var n = 0; n < 4; n++, k++){ var e = okEve(k, conj); if (!e) continue; ev = e; if (e.all) break; }
-      ST.push((ev.dk + 1) * DAY); x = conj + 20 * DAY; }
+      ST.push((ev.dk + 1) * DAY); GD.push(Math.floor((((A.EclipticGeoMoon(MK(ev.ss)).lon - (27.6 + (ev.ss - Date.UTC(2026,0,1)) / 31557600000 * 0.01397)) % 360 + 360) % 360) / W)); x = conj + 20 * DAY; }
     var mOf = function(t){ for (var i = ST.length - 2; i >= 0; i--) if (ST[i] <= t) return i; return 0; };
     var lday = function(t){ return Math.round((t - ST[mOf(t)]) / DAY) + 1; };
     var HM = ["Sako","Safar","Mawliid","Maalmadoone","Jamaad al-awal","Anbaylo","Rajab","Shacbaan","Soon","Soonfur","Sidetaal","Arafo"], HF = null;
@@ -103,6 +104,14 @@
       var c = L[0]; for (k = 0; k < L.length; k++) if (nd(L[k][3]) <= night) c = L[k];
       var day = Math.round((night - nd(c[3])) / DAY) + 1;
       row("dir", "bilo-dirir/", "Bilo-dirir · Bilo-dambarsame", c[1] + ", cishada " + day, c[0] + (c[2] >= 0 ? " · bisha " + (c[2] + 1) + "aad · " + (c[2] < 3 ? "gudcur" : "caddo") : ""));
+    })();
+    /* Bil-dhalashada: godka ay bishu ku dhalato; bilaha way isku xigaan, bil dheeraad marka bisha 1aad weli ku dhalato godadka bisha 3aad */
+    (function(){
+      var SN = ["Gu’","Xagaa","Dayr","Diraac/Jiilaal"], G = ["Godan","Listan","Urur","Cadaad","Saco","Agaallicad","Afaggaal","Naafcadde","Naafmadoobe","Tar","Majin","Koxdin","Naasogaalle","Dirir","Garbo","Bayaxow","Gudban","Libcas","Xoor","Mareego-dheer","Maran","Faruur-cirir","Jed-gabbarre","Jed-dhiriqle","Jed-gacanle","Rab-hore","Rab-danbe","Meecaad"];
+      var slot = function(g){ var k = (g + 1) % 28, s = Math.floor(k / 7), w = k % 7; return s * 3 + (w < 3 ? 0 : w < 5 ? 1 : 2); };
+      var sl = slot(GD[0]), ex = false, ic = mOf(night);
+      for (var i = 1; i <= ic; i++){ var lit = slot(GD[i]), e = (sl + 1) % 12; if (e % 3 === 0 && lit === sl) ex = true; else { sl = e; ex = false; } }
+      row("bd", "bil-dhalasho/", "Bil-dhalashada", SN[Math.floor(sl / 3)] + ", bisha " + (sl % 3 + 1) + "aad" + (ex ? " (dheeraad)" : ""), "waxay ku dhalatay " + G[GD[ic]] + " · cishada " + lday(night));
     })();
     paint();
   }, 60);
