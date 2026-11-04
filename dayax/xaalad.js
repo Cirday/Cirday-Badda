@@ -111,7 +111,8 @@
       var slot = function(g){ var k = (g + 1) % 28, s = Math.floor(k / 7), w = k % 7; return s * 3 + (w < 3 ? 0 : w < 5 ? 1 : 2); };
       var sl = slot(GD[0]), ex = false, ic = mOf(night);
       for (var i = 1; i <= ic; i++){ var lit = slot(GD[i]), e = (sl + 1) % 12; if (e % 3 === 0 && lit === sl) ex = true; else { sl = e; ex = false; } }
-      row("bd", "bil-dhalasho/", "Dhalashada Bil-dayaxeedka", SN[Math.floor(sl / 3)] + ", bisha " + (sl % 3 + 1) + "aad" + (ex ? " (dheeraad)" : ""), "waxay ku dhalatay " + G[GD[ic]] + " · cishada " + lday(night));
+      var HD = ["Dago/Sako","Safar","Mawliid","Rajal-hore","Rajal-dhexe","Rajal-dambe","Sabbuux","Waabberiis","Soon","Soonfur","Sidataal","Carrafo"], hn = ""; try{ hn = HD[+HF.formatToParts(new Date(ST[ic] + 14 * DAY)).filter(function(p){ return p.type === "month"; })[0].value - 1] + ", "; }catch(e){}
+      row("bd", "bil-dhalasho/", "Dhalashada Bil-dayaxeedka", hn + "cishada " + lday(night), SN[Math.floor(sl / 3)] + " · bisha " + (sl % 3 + 1) + "aad" + (ex ? " (dheeraad)" : "") + " · " + G[GD[ic]]);
     })();
     paint();
   }, 60);
