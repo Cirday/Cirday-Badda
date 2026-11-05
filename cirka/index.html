@@ -494,7 +494,7 @@ var L=Math.pow(10,(4.74-(M+BC))/2.5);
 return {R:Math.sqrt(L)*Math.pow(5772/T,2),L:L};
 }
 function specOf(T,t){
-return T>=30000?["O",t("Buluug","Blue","أزرق")]:T>=10000?["B",t("Buluug-cad","Blue-white","أبيض مزرق")]:T>=7500?["A",t("Cad","White","أبيض")]:T>=6000?["F",t("Cad-jaalle","Yellow-white","أبيض مصفر")]:T>=5200?["G",t("Jaalle","Yellow","أصفر")]:T>=3700?["K",t("Oranji","Orange","برتقالي")]:["M",t("Casaan","Red","أحمر")];
+return T>=30000?["O",t("Buluug","Blue","أزرق")]:T>=10000?["B",t("Buluug-maalig","Blue-white","أبيض مزرق")]:T>=7500?["A",t("Cad","White","أبيض")]:T>=6000?["F",t("Caddaan jaalle xigeen ah","Yellow-white","أبيض مصفر")]:T>=5200?["G",t("Jaalle","Yellow","أصفر")]:T>=3700?["K",t("Oranje","Orange","برتقالي")]:["M",t("Casaan/guduud","Red","أحمر")];
 }
 function fmt(n,d){return n.toLocaleString("en-US",{maximumFractionDigits:d==null?0:d,minimumFractionDigits:0})}
 function big(n){return n>=100?fmt(n):n>=10?fmt(n,1):fmt(n,2)}
@@ -685,12 +685,12 @@ var s=starMesh(5772,1,128,{gran:22,spots:1});var F=bodyFrame(A,A.Body.Sun,time);
 st.orb=Orbit(st.cam,new THREE.Vector3(),fit(1.25),1.3,60,toEarth,new THREE.Vector3(0,0,1));st.orb.auto=.05;
 st.tick=function(dt){s.userData.mat.uniforms.time.value+=dt;st.dirty=1};
 setFacts(t("Xogta","Facts","معلومات"),[[t("Dhexroorka","Diameter","القطر"),fmt(1392000)+" km"],[t("Marka loo eego Dhulka","Size vs Earth","مقارنة بالأرض"),"×109"],[t("Heerkulka dusha","Surface temperature","حرارة السطح"),"5,772 K"],[t("Fogaanta hadda","Distance now","المسافة الآن"),fmt(au*149.5978707,2)+t(" milyan km"," million km"," مليون كم")],[t("Iftiin-wakhtiyeed","Light-time","زمن الضوء"),fmt(au*499.005/60,1)+t(" daqiiqo"," min"," دقيقة")],[t("Wareegga (dhexda)","Rotation (equator)","الدوران (عند الاستواء)"),"25.4"+t(" maalmood"," days"," يوم")],[t("Nooca","Type","النوع"),"G2V · "+t("Jaalle","Yellow","أصفر")]],
-t("Ha si toos ah u eegin Qorraxda adigoon haysan shaandho gaar ah.","Never look directly at the Sun without a proper solar filter.","لا تنظر إلى الشمس مباشرة دون مرشح شمسي مناسب."));
+t("Si toos ah ha u eegin Qorraxda adigoon haysan qalabka qorraxda lagu eego.","Never look directly at the Sun without a proper solar filter.","لا تنظر إلى الشمس مباشرة دون مرشح شمسي مناسب."));
 st.el.querySelector(".vsub").textContent=t("Xiddigtayada","Our star","نجمنا");
 }
 function lyOf(ctx,i){var nm=ctx.named.get(i);return ctx.dist&&ctx.dist[i]||nm&&nm.ly||0}
 function lumClass(sp,t){var m=/(Ia|Ib|III|II|IV|V|I)(?![a-z])/.exec((sp||"").replace(/^[OBAFGKM][0-9.]*/,""));if(!m)return"";var c=m[1];
-return c[0]==="I"&&c!=="IV"&&c!=="III"&&c!=="II"?t("Xiddig aad u weyn (supergiant)","Supergiant","عملاق خارق"):c==="II"||c==="III"?t("Xiddig weyn (giant)","Giant","عملاق"):c==="IV"?t("Ku dhow weyn","Subgiant","دون العملاق"):t("Xiddig caadi ah, sida Qorraxda","Main-sequence, like the Sun","نجم نسق رئيسي مثل الشمس")}
+return c[0]==="I"&&c!=="IV"&&c!=="III"&&c!=="II"?t("Xiddig aad u weyn (supergiant)","Supergiant","عملاق خارق"):c==="II"||c==="III"?t("Xiddig weyn (giant)","Giant","عملاق"):c==="IV"?t("Xiddigaha waaweyn ka agdhow","Subgiant","دون العملاق"):t("Xiddig caadi ah, sida Qorraxda","Main-sequence, like the Sun","نجم نسق رئيسي مثل الشمس")}
 function starInfo(ctx,i){
 var mg=ctx.yo[i],bv=ctx.bv[i],T=bvToT(bv),ly=lyOf(ctx,i),rad=starRadius(mg,ly,T),sp=ctx.spec&&ctx.spec[i]||"";var mm=/^[OBAFGKMC][0-9.]*(?:\s?(?:Ia|Ib|IV|V|III|II|I))?/.exec(sp);sp=mm?mm[0]:sp.slice(0,4);
 return {mag:mg,bv:bv,T:T,ly:ly,R:rad&&rad.R,L:rad&&rad.L,spec:specOf(T,ctx.t),sp:sp,cls:lumClass(sp,ctx.t)};
@@ -712,11 +712,11 @@ st.cam.near=.002;st.cam.far=3000;st.cam.updateProjectionMatrix();
 st.tick=function(dt){star.userData.mat.uniforms.time.value+=dt*(S.T<4500?.6:1);sun&&(sun.userData.mat.uniforms.time.value+=dt);st.dirty=1};
 var rows=[[t("Midabka","Colour","اللون"),S.spec[1]],S.sp?[t("Nooca","Spectral type","الطيف"),S.sp]:null,S.cls?[t("Heerka","Class","الفئة"),S.cls]:null,[t("Heerkulka dusha","Surface temperature","حرارة السطح"),"≈ "+fmt(Math.round(S.T/50)*50)+" K"],
 [t("Iftiinka (mag)","Magnitude","القدر"),S.mag.toFixed(2)],
-S.ly?[t("Fogaanta","Distance","البعد"),fmt(S.ly,S.ly<100?1:0)+t(" sannad iftiimeed"," ly"," سنة ضوئية")]:null,
+S.ly?[t("Fogaanta","Distance","البعد"),fmt(S.ly,S.ly<100?1:0)+t(" sano-ilayseed"," ly"," سنة ضوئية")]:null,
 S.R?[t("Cabbirka (Qorraxda = 1)","Radius (Sun = 1)","نصف القطر (الشمس = 1)"),"≈ "+big(S.R)]:null,
 S.L?[t("Iftiin-bixinta (Qorraxda = 1)","Luminosity (Sun = 1)","الضياء (الشمس = 1)"),"≈ "+big(S.L)]:null,
 S.ly?[t("Iftiinka aad caawa aragto","Light you see tonight left","الضوء الذي تراه انطلق"),t(fmt(S.ly)+" sano ka hor",fmt(S.ly)+" years ago","قبل "+fmt(S.ly)+" سنة")]:null];
-var note=S.R?(S.R>=1?t(ctx.name+" waa qiyaas ahaan "+big(S.R)+" jeer Qorraxda ballaadhkeeda. Labaduba isku miisaan ayay ku sawiran yihiin.",ctx.name+" is about "+big(S.R)+" times wider than the Sun. Both are drawn to the same scale.","يبلغ "+ctx.name+" نحو "+big(S.R)+" ضعف عرض الشمس. كلاهما بالمقياس نفسه."):t(ctx.name+" way ka yar tahay Qorraxda (≈ "+big(S.R)+"). Isku miisaan.",ctx.name+" is smaller than the Sun (≈ "+big(S.R)+"). Same scale.","أصغر من الشمس (≈ "+big(S.R)+"). بالمقياس نفسه.")):t("Fogaanteeda lama hayo, sidaas darteed cabbirkeeda dhabta ah lama xisaabin karo. Midabka waxaa laga helay heerkulkeeda.","Its distance isn't in the catalogue, so its true size can't be computed. The colour comes from its temperature.","بعده غير متوفر، فلا يمكن حساب حجمه الحقيقي. اللون مأخوذ من حرارته.");
+var note=S.R?(S.R>=1?t(ctx.name+" waa qiyaas ahaan "+big(S.R)+" inta jeer ee uu Qorraxda ballaadhkeeda ka weyn yahay. Labaduba isku cabbir ayay ku sawiran yihiin.",ctx.name+" is about "+big(S.R)+" times wider than the Sun. Both are drawn to the same scale.","يبلغ "+ctx.name+" نحو "+big(S.R)+" ضعف عرض الشمس. كلاهما بالمقياس نفسه."):t(ctx.name+" way ka yar tahay Qorraxda (≈ "+big(S.R)+"), iyada oo ay isku cabbir yihiin.",ctx.name+" is smaller than the Sun (≈ "+big(S.R)+"). Same scale.","أصغر من الشمس (≈ "+big(S.R)+"). بالمقياس نفسه.")):t("Fogaanteeda lama hayo, sidaas daraaddeed cabbirkeeda dhabta ah lama xisaabin karo. Midabkaan waxaa laga helay heerkulkeeda.","Its distance isn't in the catalogue, so its true size can't be computed. The colour comes from its temperature.","بعده غير متوفر، فلا يمكن حساب حجمه الحقيقي. اللون مأخوذ من حرارته.");
 setFacts(t("Xogta","Facts","معلومات"),rows,note);
 st.el.querySelector(".vsub").textContent=t("Xiddig","Star","نجم")+" · "+S.spec[1];
 }
@@ -759,7 +759,7 @@ var f0=side.clone().multiplyScalar(.9).add(new THREE.Vector3(0,0,.45)).add(view.
 var half=selP?selP.length()*.5:5;
 st.orb=Orbit(st.cam,selP?selP.clone().multiplyScalar(.5):new THREE.Vector3(),fit(half*1.25+1),1,90,f0,new THREE.Vector3(0,0,1));st.orb.auto=.035;
 st.cam.near=.01;st.cam.far=3000;st.cam.updateProjectionMatrix();
-var rows=[S.ly?[t("Fogaanta","Distance","البعد"),fmt(S.ly,S.ly<100?1:0)+t(" sannad iftiimeed"," light-years"," سنة ضوئية")]:null,
+var rows=[S.ly?[t("Fogaanta","Distance","البعد"),fmt(S.ly,S.ly<100?1:0)+t(" sano-ilayseed"," light-years"," سنة ضوئية")]:null,
 S.ly?[t("Kiiloomitirro","Kilometres","كيلومترات"),(S.ly*9.4607).toLocaleString("en-US",{maximumFractionDigits:1})+" × 10¹² km"]:null,
 S.ly?[t("Diyaarad (900 km/saac)","Airliner (900 km/h)","طائرة (900 كم/س)"),fmt(S.ly*9.4607e12/900/8766/1e6,1)+t(" malyan sano"," million years"," مليون سنة")]:null,
 selC?[t("Kooxda","Constellation","الكوكبة"),selC]:null,[t("Xiddigaha muuqda","Stars shown","النجوم المعروضة"),fmt(near.length)]];
