@@ -660,17 +660,17 @@ if(mode==="free")st.orb.auto=.12;
 // facts
 var ill=null;try{ill=A.Illumination(B,time)}catch(e){}
 var km=distAU*149597870.7,lt=distAU*499.005;
-var dayH=Math.abs(p.rot),day=dayH>=48?big(dayH/24)+t(" maalmood"," days"," يوم"):big(dayH)+t(" saacad"," h"," ساعة");
+var dayH=Math.abs(p.rot),day=dayH>=48?big(dayH/24)+t(" maalmood"," days"," يوم"):big(dayH)+t(" saacadood"," h"," ساعة");
 var rows=[[t("Dhexroorka","Diameter","القطر"),fmt(2*p.r)+" km"],[t("Marka loo eego Dhulka","Size vs Earth","مقارنة بالأرض"),"×"+big(p.r/EARTH_R)],
 [t("Fogaanta hadda","Distance now","المسافة الآن"),km>2e6?fmt(km/1e6,1)+t(" milyan km"," million km"," مليون كم"):fmt(km)+" km"],
-[t("Iftiin-wakhtiyeed","Light-time","زمن الضوء"),lt<120?fmt(lt,1)+t(" ilmiriqsi"," s"," ث"):fmt(lt/60,1)+t(" daqiiqo"," min"," دقيقة")],
+[t("Iftiin-wakhtiyeed","Light-time","زمن الضوء"),lt<120?fmt(lt,1)+t(" ilmiriqsiyood"," s"," ث"):fmt(lt/60,1)+t(" daqiiqadood"," min"," دقيقة")],
 ill?[t("Qaybta iftiimaysa","Illuminated","الجزء المضاء"),fmt(100*ill.phase_fraction,0)+"%"]:null,
 [t("Wareegga is-dulmara","Rotation","دورة الدوران"),day+(p.rot<0?t(" (dib)"," (retrograde)"," (عكسي)"):"")],
 [t("Jinjeerka dhidibka dhulka","Axial tilt","ميل المحور"),fmt(p.tilt,1)+"°"],
 [t("Cufis-jiidad","Gravity","الجاذبية"),fmt(p.g,2)+" m/s²"],
 p.au?[t("Fogaanta Qorraxda","From the Sun","البعد عن الشمس"),fmt(p.au,2)+" AU"]:null];
 var note=mode==="sky"?t("Waxaad u aragtaa sida uu hadda Dhulka uga muuqdo, qaybta iftiimaysa iyo jihada waqooyi (kor) waa kuwa dhabta ah; Jiid si aad u wareejiso.","Shown as seen from Earth right now: the lit part and north (up) are real. Drag to turn it.","يُعرض كما يُرى من الأرض الآن: الجزء المضاء والشمال (أعلى) حقيقيان. اسحب للتدوير."):
-mode==="size"?t("Cabbirradu waa sax: "+ctx.name+", Dhulkana cabbirkaa uun ayaa lagu sawiray.","True scale: "+ctx.name+" and Earth drawn at the same scale.","مقياس حقيقي: "+ctx.name+" والأرض بالمقياس نفسه."):
+mode==="size"?t("Cabbirradu waa sax: "+ctx.name+" iyo Dhulkana cabbirkaas ayaa lagu sawiray.","True scale: "+ctx.name+" and Earth drawn at the same scale.","مقياس حقيقي: "+ctx.name+" والأرض بالمقياس نفسه."):
 t("Iftiinka Qorraxdu wuxuu ka yimaadaa meesha ay dhab ahaantii qorraxdu jirto.","Sunlight comes from where the Sun really is now.","ضوء الشمس يأتي من موقعها الحقيقي الآن.");
 setFacts(t("Xogta","Facts","معلومات"),rows,note);
 st.el.querySelector(".vsub").textContent=ill?(key==="Moon"?t("Dayax","Moon","القمر"):t("Meere","Planet","كوكب"))+" · "+fmt(100*ill.phase_fraction,0)+"% "+t("iftiin","lit","مضاء"):"";
@@ -684,7 +684,7 @@ skyBackdrop(scene,ctx,900);
 var s=starMesh(5772,1,128,{gran:22,spots:1});var F=bodyFrame(A,A.Body.Sun,time);s.matrixAutoUpdate=false;s.matrix.copy(F);scene.add(s);
 st.orb=Orbit(st.cam,new THREE.Vector3(),fit(1.25),1.3,60,toEarth,new THREE.Vector3(0,0,1));st.orb.auto=.05;
 st.tick=function(dt){s.userData.mat.uniforms.time.value+=dt;st.dirty=1};
-setFacts(t("Xogta","Facts","معلومات"),[[t("Dhexroorka","Diameter","القطر"),fmt(1392000)+" km"],[t("Marka loo eego Dhulka","Size vs Earth","مقارنة بالأرض"),"×109"],[t("Heerkulka dusha","Surface temperature","حرارة السطح"),"5,772 K"],[t("Fogaanta hadda","Distance now","المسافة الآن"),fmt(au*149.5978707,2)+t(" milyan km"," million km"," مليون كم")],[t("Iftiin-wakhtiyeed","Light-time","زمن الضوء"),fmt(au*499.005/60,1)+t(" daqiiqo"," min"," دقيقة")],[t("Wareegga (dhexda)","Rotation (equator)","الدوران (عند الاستواء)"),"25.4"+t(" maalmood"," days"," يوم")],[t("Nooca","Type","النوع"),"G2V · "+t("Jaalle","Yellow","أصفر")]],
+setFacts(t("Xogta","Facts","معلومات"),[[t("Dhexroorka","Diameter","القطر"),fmt(1392000)+" km"],[t("Marka loo eego Dhulka","Size vs Earth","مقارنة بالأرض"),"×109"],[t("Heerkulka dusha","Surface temperature","حرارة السطح"),"5,772 K"],[t("Fogaanta hadda","Distance now","المسافة الآن"),fmt(au*149.5978707,2)+t(" milyan km"," million km"," مليون كم")],[t("Iftiin-wakhtiyeed","Light-time","زمن الضوء"),fmt(au*499.005/60,1)+t(" daqiiqadood"," min"," دقيقة")],[t("Wareegga (dhexda)","Rotation (equator)","الدوران (عند الاستواء)"),"25.4"+t(" maalmood"," days"," يوم")],[t("Nooca","Type","النوع"),"G2V · "+t("Jaalle","Yellow","أصفر")]],
 t("Si toos ah ha u eegin Qorraxda adigoon haysan qalabka qorraxda lagu eego.","Never look directly at the Sun without a proper solar filter.","لا تنظر إلى الشمس مباشرة دون مرشح شمسي مناسب."));
 st.el.querySelector(".vsub").textContent=t("Xiddigtayada","Our star","نجمنا");
 }
