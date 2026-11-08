@@ -45,7 +45,7 @@
       html += "</optgroup>";
     });
     if (!found) html += '<option value="' + cur.lat + "," + cur.lon + '" selected>' + (cur.name || "Goobtaada") + " (" + (+cur.lat).toFixed(2) + ", " + (+cur.lon).toFixed(2) + ")</option>";
-    html += '</select><button type="button">Goobtayda isticmaal</button><span class="gm" hidden></span>';
+    html += '</select><button type="button">Goobtaada adeegso</button><span class="gm" hidden></span>';
     box.className = (box.className ? box.className + " " : "") + "goob";
     box.innerHTML = html;
     var sel = box.querySelector("select"), btn = box.querySelector("button"), msg = box.querySelector(".gm");
