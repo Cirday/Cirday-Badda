@@ -255,3 +255,5 @@ td.md{color:var(--flag);font-weight:600}
 .rv-lbl::before{display:none}
 #map.lowzoom .rv-lbl.minor{display:none}
 .warn.rv{border-inline-start-color:var(--river)}
+
+#snma{display:grid;gap:8px;margin-bottom:10px}.snma-h{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75}#snma .warn small{opacity:.75;font-size:.8rem}.snma-src{font-size:.72rem;opacity:.65}
