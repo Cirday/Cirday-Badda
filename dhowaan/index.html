@@ -6,55 +6,20 @@
 <title>Cirday · Dhowaan</title>
 <meta name="description" content="Cirday: hoyga falagga Soomaalida. Dhowaan ayuu furmayaa.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0B1029">
+<meta name="theme-color" content="#060910">
 <link rel="icon" type="image/png" sizes="32x32" href="/cirka/icons/favicon-32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Instrument+Sans:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap">
-<style>
-:root{--habeen:#0B1029;--ciid:#D9B56D;--iftiin:#F1EBDC;--ciiro:#8E95BC;--xariiq:rgba(241,235,220,.14)}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;background:var(--habeen);color:var(--iftiin);font:17px/1.6 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body{display:grid;place-items:center;overflow:hidden;background:radial-gradient(90% 70% at 50% 110%,#1d2658 0%,transparent 70%),var(--habeen)}
-canvas{position:fixed;inset:0;width:100%;height:100%}
-main{position:relative;text-align:center;padding:24px;max-width:640px}
-.logo{width:56px;height:56px;margin:0 auto 26px;display:block}
-h1{font:500 clamp(3.4rem,11vw,6.5rem)/.95 "Cormorant Garamond",Georgia,serif;margin:0 0 20px;letter-spacing:-.02em}
-p{margin:0 auto;color:var(--ciiro);max-width:42ch;font-size:1.06rem}
-.ar{font-family:"Noto Naskh Arabic",serif;margin-top:6px}
-.en{margin-top:18px;font-size:.95rem}
-a{display:inline-flex;align-items:center;gap:10px;margin-top:34px;color:var(--iftiin);text-decoration:none;border:1px solid var(--xariiq);border-radius:12px;padding:12px 20px;font-weight:500}
-a:hover{border-color:var(--ciid);color:var(--ciid)}
-a:focus-visible{outline:2px solid var(--ciid);outline-offset:3px}
-</style>
+<style>:root{--night:#060910;--ink2:#A3AAB8;--line:rgba(255,255,255,.18);--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--ar:"Segoe UI","Geeza Pro","SF Arabic","Noto Sans Arabic",Tahoma,sans-serif}*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--night);color:#fff;font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}body{display:grid;place-items:center;overflow:hidden}canvas{position:fixed;inset:0;width:100%;height:100%}main{position:relative;text-align:center;padding:24px;max-width:620px}.logo{width:48px;height:48px;margin:0 auto 28px;display:block;color:#fff}h1{font:700 clamp(3rem,10vw,5.5rem)/1 var(--sans);margin:0 0 20px;letter-spacing:-.045em}p{margin:0 auto;color:var(--ink2);max-width:44ch;font-size:1.0625rem}.ar{font-family:var(--ar);margin-top:8px}.en{margin-top:4px;font-size:.9375rem}a{display:inline-flex;align-items:center;gap:8px;margin-top:36px;color:#060910;background:#fff;text-decoration:none;border-radius:999px;padding:0 22px;min-height:46px;font-weight:600;font-size:.9375rem}a:hover{background:#E6E8EC}a:focus-visible{outline:2px solid #4189DD;outline-offset:3px}</style>
 </head>
 <body>
 <canvas id="c" aria-hidden="true"></canvas>
 <main>
-  <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="#D9B56D" stroke-width="1.2"/><path d="M20 7.5a9 9 0 1 0 0 17a7.2 7.2 0 0 1 0-17z" fill="#F1EBDC"/><circle cx="24.5" cy="9" r="1.4" fill="#D9B56D"/></svg>
+  <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M19.6 8a8.6 8.6 0 1 0 0 16a6.9 6.9 0 0 1 0-16z" fill="currentColor"/><circle cx="23.6" cy="10.2" r="1.6" fill="#4189DD"/></svg>
   <h1>Cirday</h1>
   <p>Hoyga falagga Soomaalida dhowaan ayuu furmayaa: magacyada xiddigaha, godadka dayaxa, saadaasha badda iyo kaltirsiyada.</p>
   <p class="ar" lang="ar" dir="rtl">موطن علم الفلك الصومالي يُفتح قريباً.</p>
   <p class="en" lang="en">The home of Somali astronomy opens soon.</p>
   <a href="https://www.facebook.com/XidaarCirday" rel="noopener">Na raac Facebook</a>
 </main>
-<script>
-/* a slow night sky: stars drift around the celestial pole, the way they do over the horizon */
-(function(){
-  var c=document.getElementById("c"),x=c.getContext("2d"),W,H,S=[],R=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function size(){var d=Math.min(devicePixelRatio||1,2);W=c.width=innerWidth*d;H=c.height=innerHeight*d;}
-  size();addEventListener("resize",size);
-  for(var i=0;i<420;i++)S.push({r:Math.sqrt(Math.random())*1.15,a:Math.random()*6.283,s:Math.random()<.92?.5+Math.random()*.8:1.3+Math.random()*1.2,o:.25+Math.random()*.7});
-  var t=0;
-  function draw(){
-    x.clearRect(0,0,W,H);var cx=W*.5,cy=H*1.08,M=Math.max(W,H);
-    for(var i=0;i<S.length;i++){var s=S[i],a=s.a+t,px=cx+Math.cos(a)*s.r*M,py=cy+Math.sin(a)*s.r*M;
-      if(px<0||py<0||px>W||py>H)continue;x.globalAlpha=s.o;x.fillStyle=s.s>1.3?"#F7E7C4":"#F1EBDC";x.beginPath();x.arc(px,py,s.s*(W/innerWidth),0,6.283);x.fill();}
-    x.globalAlpha=.08;x.strokeStyle="#D9B56D";x.lineWidth=1;x.beginPath();x.arc(cx,cy,M*.62,0,6.283);x.stroke();
-    t-=.00012;if(!R)requestAnimationFrame(draw);
-  }
-  draw();
-})();
-</script>
+<script>(function(){var i=document.getElementById("c"),t=i.getContext("2d"),a,r,h=[],v=matchMedia("(prefers-reduced-motion: reduce)").matches;function m(){var n=Math.min(devicePixelRatio||1,2);a=i.width=innerWidth*n,r=i.height=innerHeight*n}m(),addEventListener("resize",m);for(var M=0;M<420;M++)h.push({r:Math.sqrt(Math.random())*1.15,a:Math.random()*6.283,s:Math.random()<.92?.5+Math.random()*.8:1.3+Math.random()*1.2,o:.25+Math.random()*.7});var f=0;function s(){t.clearRect(0,0,a,r);for(var n=a*.5,g=r*1.08,o=Math.max(a,r),d=0;d<h.length;d++){var e=h[d],u=e.a+f,c=n+Math.cos(u)*e.r*o,l=g+Math.sin(u)*e.r*o;c<0||l<0||c>a||l>r||(t.globalAlpha=e.o,t.fillStyle=e.s>1.3?"#DCE9FF":"#FFFFFF",t.beginPath(),t.arc(c,l,e.s*(a/innerWidth),0,6.283),t.fill())}t.globalAlpha=.08,t.strokeStyle="#4189DD",t.lineWidth=1,t.beginPath(),t.arc(n,g,o*.62,0,6.283),t.stroke(),f-=12e-5,v||requestAnimationFrame(s)}s()})();</script>
 </body>
 </html>
