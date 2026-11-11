@@ -1,4 +1,4 @@
-name: Digniinaha SNMA, SWALIM iyo ICPAC
+name: Digniinaha SNMA
 on:
   schedule:
     - cron: "17 */2 * * *"
@@ -15,15 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Soo qaado digniinaha
-        run: |
-          python3 -I .github/scripts/digniin.py digniin.json
-          python3 -I .github/scripts/rasmi.py rasmi.json
+        run: python3 -I .github/scripts/digniin.py digniin.json
       - name: Kaydi haddii ay isbeddeleen
         run: |
-          if [ -n "$(git status --porcelain digniin.json rasmi.json)" ]; then
+          if [ -n "$(git status --porcelain digniin.json)" ]; then
             git config user.name "Cirday"
             git config user.email "shuraym7000@gmail.com"
-            git add digniin.json rasmi.json
-            git commit -m "Digniinaha rasmiga ah: cusbooneysiin"
+            git add digniin.json
+            git commit -m "Digniinaha SNMA: cusbooneysiin"
             git pull --rebase -q && git push
           fi
