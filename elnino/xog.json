@@ -1,0 +1,23 @@
+{
+ "upd": "2026-11-12",
+ "enso": {
+  "nino34": 2.1,
+  "date": "2026-10-08",
+  "points": [
+   {"x": 1, "y": -0.9, "lab": "DJF 2026 (RONI)"},
+   {"x": 6, "y": 1.0, "lab": "MJJ 2026 (RONI)"},
+   {"x": 7.5, "y": 1.8, "lab": "Agoosto 2026 (Niño 3.4)"},
+   {"x": 9.25, "y": 2.1, "lab": "Okt 2026 (Niño 3.4)"}
+  ],
+  "probs": [["Seb, Nof", 54], ["Okt, Diis", 83], ["Nof, Jan", 70]]
+ },
+ "rivers": [
+  {"s": "jowhar", "d": "2026-09-30", "v": 2.48, "src": "SWALIM"},
+  {"s": "jowhar", "d": "2026-10-07", "v": 4.70, "src": "SWALIM"},
+  {"s": "jowhar", "d": "2026-10-14", "v": 5.38, "src": "SWALIM"},
+  {"s": "jowhar", "d": "2026-10-30", "v": 4.27, "src": "SWALIM"},
+  {"s": "belet", "d": "2026-10-07", "v": 3.98, "src": "SWALIM"},
+  {"s": "belet", "d": "2026-10-14", "v": 4.40, "src": "SWALIM"}
+ ],
+ "cities": {}
+}
