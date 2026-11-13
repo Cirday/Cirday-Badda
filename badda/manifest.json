@@ -1,6 +1,6 @@
 {
-  "name": "Cirday Badda",
-  "short_name": "CirdayBadda",
+  "name": "Cirday",
+  "short_name": "Cirday",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0F172A",
