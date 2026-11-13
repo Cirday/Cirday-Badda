@@ -19,10 +19,11 @@
 
   /* Sannadka Doonyaha: 15 Ogost, 12 × 30 cisho, 4 gudcur, sugidda Dabbooje-yaraha */
   (function(){
-    var M = ["Soon","Soonfur","Sidetaal","Arafo","Sako","Safar","Rabiic al-awal","Rabiic al-aakhir","Jamaad al-awal","Jamaad al-aakhir","Rajab","Shacbaan"];
+    /* bilaha iyo xilliyada sida bogga Sannadka Doonyaha: Rajab iyo Shacbaan waa dayrta doonyaha (Koos), Soon ilaa Safar waa Asjab, kaddibna Koos */
+    var M = ["Rajab","Shacbaan","Soon","Soonfur","Sidetaal","Arafo","Sako","Safar","Rabiic al-awal","Rabiic al-aakhir","Jamaad al-awal","Jamaad al-aakhir"];
     var y = new Date(night).getUTCFullYear(), s = Date.UTC(y, 7, 15); if (night < s) s = Date.UTC(y - 1, 7, 15);
     var d = Math.round((night - s) / DAY) + 1, v, sub;
-    if (d <= 360){ var m = Math.floor((d - 1) / 30); v = M[m] + ", cishada " + (d - m * 30); sub = (m < 6 ? "Asjab" : "Koos") + " · cishada " + d; }
+    if (d <= 360){ var m = Math.floor((d - 1) / 30); v = M[m] + ", cishada " + (d - m * 30); sub = (m >= 2 && m <= 7 ? "Asjab" : "Koos") + " · cishada " + d; }
     else if (d <= 364){ v = "Gudcur, cishada " + (d - 360); sub = "cishada " + d; }
     else { v = "Sugidda Dabbooje-yaraha"; sub = "cishada " + d; }
     row("doon", "doonyaha/", "Sannadka Doonyaha", v, sub);
@@ -69,18 +70,22 @@
       ST.push((ev.dk + 1) * DAY); GD.push(Math.floor((((A.EclipticGeoMoon(MK(ev.ss)).lon - (27.6 + (ev.ss - Date.UTC(2026,0,1)) / 31557600000 * 0.01397)) % 360 + 360) % 360) / W)); x = conj + 20 * DAY; }
     var mOf = function(t){ for (var i = ST.length - 2; i >= 0; i--) if (ST[i] <= t) return i; return 0; };
     var lday = function(t){ return Math.round((t - ST[mOf(t)]) / DAY) + 1; };
-    var HM = ["Sako","Safar","Mawliid","Maalmadoone","Jamaad al-awal","Anbaylo","Rajab","Shacbaan","Soon","Soonfur","Sidetaal","Arafo"], HF = null;
+    /* magacyada bilaha sida bogga Bilaha Dayaxa */
+    var HM = ["Dago","Safar","Mawliid","Rajal-hore","Rajal-dhexe","Rajal-dambe","Sabbuux","Soondheere/Waaberiis","Soonqaad/Soon","Soonfur","Sidataal","Arrafo"], HF = null;
     try{ HF = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura-nu-latn", {month:"numeric", timeZone:"UTC"}); }catch(e){}
     var hm = function(t){ try{ return HM[+HF.formatToParts(new Date(t)).filter(function(p){ return p.type === "month"; })[0].value - 1]; }catch(e){ return ""; } };
 
     /* Bilaha Dayaxa (Wadaanta): bisha Afaggaalladu 18/1 ku dhacaan waa diraac 1 (29 ama ka danbe: bisha xigta) */
     (function(){
-      function start(Y){ var s = Date.UTC(Y, 0, 18), i = mOf(s); return lday(s) >= 29 ? ST[i + 1] : ST[i]; }
-      var Y = y + 1; while (start(Y) > night) Y--;
-      var a = start(Y), b = start(Y + 1), idx = 0, i0 = mOf(a), ic = mOf(night);
-      idx = ic - i0;
-      var S = ["Diraac","Gu’","Xagaa","Dayr"], k = Math.min(3, Math.floor(idx / 3)), o = idx < 12 ? idx % 3 + 1 : 4;
-      row("bil", "bilaha/", "Bilaha Dayaxa", hm(ST[ic] + 14 * DAY) + ", cishada " + lday(night), S[k] + " · bisha " + o + "aad" + (idx === 12 ? " (dheeraad)" : ""));
+      /* sida bogga Bilaha Dayaxa (Wadaanta): xilliyadu waxay ka bilaabmaan 18/1, +90, +180, +270 cisho;
+         xilli kasta bishiisa 1aad waa bisha uu bilowgeedu ugu dhow yahay bilowga xilliga */
+      var near = function(t){ var i = mOf(t), a = ST[i], n = ST[i + 1]; return n && (n - t) < (t - a) ? n : a; };
+      var ks = function(Y){ var s0 = Date.UTC(Y, 0, 18); return [0, 90, 180, 270].map(function(n){ return near(s0 + n * DAY); }); };
+      var Y = y + 1; while (ks(Y)[0] > night) Y--;
+      var K = ks(Y), ic = mOf(night), cs = ST[ic], k = 0;
+      for (var j = 3; j >= 0; j--) if (cs >= K[j]){ k = j; break; }
+      var o = ic - mOf(K[k]) + 1, S = ["Diraac","Gu’","Xagaa","Dayr"];
+      row("bil", "bilaha/", "Bilaha Dayaxa", hm(ST[ic] + 14 * DAY) + ", cishada " + lday(night), S[k] + " · bisha " + o + "aad" + (o > 3 ? " (dheeraad)" : ""));
     })();
 
     /* Bilo-dirir iyo Bilo-dambarsame */
