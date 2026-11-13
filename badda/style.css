@@ -257,3 +257,5 @@ td.md{color:var(--flag);font-weight:600}
 .warn.rv{border-inline-start-color:var(--river)}
 
 #snma{display:grid;gap:8px;margin-bottom:10px}.snma-h{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75}#snma .warn small{opacity:.75;font-size:.8rem}.snma-src{font-size:.72rem;opacity:.65}
+
+@media (max-width:600px){.brand{font-size:1.05rem;min-width:0}.brand>span{display:flex;flex-direction:column;gap:3px}.brand>span b{font-size:1.05rem;white-space:nowrap}.brand>span{font-size:.68rem;letter-spacing:.16em}.brand svg,.brand .mark{flex-shrink:0;width:28px;height:28px}}
