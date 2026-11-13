@@ -9,10 +9,12 @@
   var GREG = ["Jan","Feb","Mar","Abr","May","Jun","Lul","Ogs","Sep","Okt","Nof","Dis"];
   var fmt = function(t){ var d = new Date(t); return d.getUTCDate() + " " + GREG[d.getUTCMonth()]; };
   var rows = {};
-  function row(id, href, name, val, sub){ rows[id] = '<a class="xr" href="' + href + '"><span class="xn">' + name + '</span><span class="xv">' + val + (sub ? '<small>' + sub + '</small>' : '') + '</span></a>'; }
+  var X = window.CIRDAY_XAALAD = window.CIRDAY_XAALAD || {};   /* kaarka maalinta ayaa isticmaala */
+  function row(id, href, name, val, sub){ X[id] = {href: href, name: name, val: val, sub: sub || ""}; rows[id] = '<a class="xr" href="' + href + '"><span class="xn">' + name + '</span><span class="xv">' + val + (sub ? '<small>' + sub + '</small>' : '') + '</span></a>'; }
   function paint(){
     box.innerHTML = '<div class="xh">' + (eve || loc.getUTCHours() < 6 ? "Caawa" : "Maanta") + '</div>' +
       ["doon","bil","dab","xil","dir","bd"].map(function(k){ return rows[k] || ""; }).join("");
+    if (typeof window.renderKaar === "function") try{ window.renderKaar(); }catch(e){}
   }
 
   /* Sannadka Doonyaha: 15 Ogost, 12 × 30 cisho, 4 gudcur, sugidda Dabbooje-yaraha */
