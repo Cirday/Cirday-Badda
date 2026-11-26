@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.cirday.cirka",
+        "sha256_cert_fingerprints": ["18:A7:9C:68:F3:7A:DB:A3:61:05:56:DE:04:E5:C0:56:4B:D4:EB:2F:AC:8F:7A:0E:ED:2C:6C:71:80:05:0E:DB"]
+      }
+    }]
