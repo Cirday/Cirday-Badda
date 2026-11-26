@@ -1,8 +1,11 @@
 [{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "com.cirday.cirka",
-        "sha256_cert_fingerprints": ["18:A7:9C:68:F3:7A:DB:A3:61:05:56:DE:04:E5:C0:56:4B:D4:EB:2F:AC:8F:7A:0E:ED:2C:6C:71:80:05:0E:DB"]
-      }
-    }]
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.cirday.cirka",
+    "sha256_cert_fingerprints": [
+      "05:91:D8:A6:67:15:29:E9:5A:22:33:6F:F3:17:73:6F:E0:F7:1F:8A:B8:FF:8A:5B:E0:42:0B:F7:94:51:00:02",
+      "18:A7:9C:68:F3:7A:DB:A3:61:05:56:DE:04:E5:C0:56:4B:D4:EB:2F:AC:8F:7A:0E:ED:2C:6C:71:80:05:0E:DB"
+    ]
+  }
+}]
